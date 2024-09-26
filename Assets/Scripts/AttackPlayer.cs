@@ -19,18 +19,18 @@ public class AttackPlayer : MonoBehaviour
         //check if the collided object is the player
         if (other.CompareTag(playerTag))
         {
+            zombieAnim.SetTrigger("Attack_Trig");
+            zombieAnim.SetBool("isWalking", false);
 
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damageAmount);
+            }
+
+            Debug.Log("Collision Detected");
         }
-        zombieAnim.SetTrigger("Attack_Trig");
-        zombieAnim.SetBool("isWalking", false);
         
-        PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            playerHealth.TakeDamage(damageAmount);
-        }
-
-        Debug.Log("Collision Detected");
     }
 
 

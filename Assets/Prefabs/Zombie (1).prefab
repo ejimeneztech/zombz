@@ -2585,9 +2585,10 @@ GameObject:
   - component: {fileID: 7185178141148761160}
   - component: {fileID: 3714888961214708885}
   - component: {fileID: 2725001823070506694}
+  - component: {fileID: 1416963253911076124}
   m_Layer: 0
   m_Name: Zombie (1)
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2685,8 +2686,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2645118, y: 2.3609393, z: 1.088491}
-  m_Center: {x: -0.13225521, y: 0.6804678, z: 0.044241607}
+  m_Size: {x: 1.2645118, y: 1.8014176, z: 0.42748883}
+  m_Center: {x: -0.13225521, y: 0.9602194, z: -0.025581107}
 --- !u!114 &2725001823070506694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2701,6 +2702,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 25
   playerTag: Player
+--- !u!114 &1416963253911076124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884052727494966600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9adda27568f72274c95fcc64ee10a566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  currentHealth: 0
 --- !u!1 &4004719717595696760
 GameObject:
   m_ObjectHideFlags: 0

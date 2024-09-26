@@ -6,9 +6,14 @@ public class Shoot : MonoBehaviour
 {
     public KeyCode fireKey = KeyCode.Mouse0;
     public Transform gunPoint;
+
     public float fireRange = 100f;
-    public float damageAmount = 10f;
-    public LayerMask targetLayerMask; //LayerMask to filter whwat can be hit
+    public float damageAmount = 25f;
+
+    public string zombieTag = "Zombie";
+
+   
+    
 
     void OnDrawGizmos()
     {
@@ -19,23 +24,42 @@ public class Shoot : MonoBehaviour
         }
     }
 
+   
+
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(gunPoint.position, gunPoint.forward * fireRange, Color.red, 1.0f);
+        Debug.DrawRay(gunPoint.position, -gunPoint.right * fireRange, Color.red, 1.0f);
 
         if (Input.GetKeyDown(fireKey))
         {
             RaycastHit hitInfo;
-            if(Physics.Raycast(gunPoint.position, gunPoint.forward, out hitInfo, fireRange))
+            if(Physics.Raycast(gunPoint.position, -gunPoint.right, out hitInfo, fireRange))
             {
                 GameObject target = hitInfo.collider.gameObject;
-                Debug.Log("Hit Target");
+                if (target.CompareTag(zombieTag))
+                {
+                    //Deal damage to zombie
+                    ZombieHealth zombieHealth = target.GetComponent<ZombieHealth>();
+                    if (zombieHealth != null) 
+                    {
+                        zombieHealth.TakeDamage(damageAmount);
+                        Debug.Log(zombieHealth.currentHealth);
+                    }
+                    Debug.Log("Hit Target");
+                }
+                else
+                {
+                    Debug.Log("No Hit");
+                }
+
             } 
-            else
-            {
-                Debug.Log("No Hit");
-            }
+            
         }
     }
+
+
+
+
+
 }
