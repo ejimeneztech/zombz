@@ -412,6 +412,11 @@ MonoBehaviour:
   swayAmount: 0.05
   smoothFactor: 4
   maxSwayAmount: 0.1
+--- !u!4 &1311904995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5704384971522418669, guid: 177678c4ff393b34699cc8f06c28bbcd, type: 3}
+  m_PrefabInstance: {fileID: 159920058283300181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1457137089
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +812,18 @@ PrefabInstance:
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 1163417668}
+    - target: {fileID: 195360551011513319, guid: 177678c4ff393b34699cc8f06c28bbcd, type: 3}
+      propertyPath: gunTransform
+      value: 
+      objectReference: {fileID: 1311904995}
+    - target: {fileID: 195360551011513319, guid: 177678c4ff393b34699cc8f06c28bbcd, type: 3}
+      propertyPath: recoilAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 195360551011513319, guid: 177678c4ff393b34699cc8f06c28bbcd, type: 3}
+      propertyPath: recoilRotationAmount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4628205917141815469, guid: 177678c4ff393b34699cc8f06c28bbcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.24

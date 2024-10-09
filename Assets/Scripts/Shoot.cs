@@ -8,12 +8,28 @@ public class Shoot : MonoBehaviour
     public float damageAmount = 25f;
     public string zombieTag = "Zombie";
 
+
+    //Recoil settings
+    public float recoilRotationAmount = 0.2f; //amount of recoil to apply
+    public float recoilReturnSpeed = 5f;  //speed at which recoil returns
+    public Transform gunTransform;     // gun transform
+
+    private Quaternion originalGunRotation;   //store original position of gun
+
+    void Start()
+    {
+        originalGunRotation = gunTransform.localRotation;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(fireKey))
         {
             ShootRay();
+            ApplyRecoil();
         }
+
+        ResetRecoil();
     }
 
     private void ShootRay()
@@ -52,5 +68,16 @@ public class Shoot : MonoBehaviour
             zombieHealth.TakeDamage(damageAmount);
             Debug.Log($"Zombie Health: {zombieHealth.currentHealth}");
         }
+    }
+
+
+    void ApplyRecoil()
+    {
+        gunTransform.localRotation *= Quaternion.Euler(0, 0, -recoilRotationAmount);
+    }
+
+    void ResetRecoil()
+    {
+        gunTransform.localRotation = Quaternion.Lerp(gunTransform.localRotation, originalGunRotation, Time.deltaTime * recoilReturnSpeed);
     }
 }
