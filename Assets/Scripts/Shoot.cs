@@ -1,15 +1,21 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class Shoot : MonoBehaviour
 {
     public KeyCode fireKey = KeyCode.Mouse0;
     public Camera playerCam;
-    public float damageAmount = 25f;
+    public float damageAmount = 25f; //can go in weapon script
     public string zombieTag = "Zombie";
 
+    //ammo
+    public int maxAmmo = 25;
+    public int currentAmmo;
+    public TextMeshProUGUI ammoText;
 
-    //Recoil settings
+
+    //Recoil settings (can go in weapon script)
     public float recoilRotationAmount = 0.2f; //amount of recoil to apply
     public float recoilReturnSpeed = 5f;  //speed at which recoil returns
     public Transform gunTransform;     // gun transform
@@ -18,15 +24,20 @@ public class Shoot : MonoBehaviour
 
     void Start()
     {
+        currentAmmo = maxAmmo;
+        updateAmmoUI();
         originalGunRotation = gunTransform.localRotation;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(fireKey))
+        if (Input.GetKeyDown(fireKey) && currentAmmo > 0)
         {
             ShootRay();
             ApplyRecoil();
+            currentAmmo -= 1;
+            updateAmmoUI();
+            
         }
 
         ResetRecoil();
@@ -79,5 +90,10 @@ public class Shoot : MonoBehaviour
     void ResetRecoil()
     {
         gunTransform.localRotation = Quaternion.Lerp(gunTransform.localRotation, originalGunRotation, Time.deltaTime * recoilReturnSpeed);
+    }
+
+    void updateAmmoUI()
+    {
+        ammoText.text = $"{currentAmmo}/{maxAmmo}";
     }
 }
