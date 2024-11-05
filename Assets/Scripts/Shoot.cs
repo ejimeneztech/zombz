@@ -15,12 +15,14 @@ public class Shoot : MonoBehaviour
     public TextMeshProUGUI ammoText;
 
 
-    //Recoil settings (can go in weapon script)
+    
     public float recoilRotationAmount = 0.2f; //amount of recoil to apply
     public float recoilReturnSpeed = 5f;  //speed at which recoil returns
     public Transform gunTransform;     // gun transform
 
     private Quaternion originalGunRotation;   //store original position of gun
+
+    public ParticleSystem flashVFX;
 
     void Start()
     {
@@ -35,6 +37,7 @@ public class Shoot : MonoBehaviour
         {
             ShootRay();
             ApplyRecoil();
+            playMuzzleFlashVFX();
             currentAmmo -= 1;
             updateAmmoUI();
             
@@ -92,8 +95,18 @@ public class Shoot : MonoBehaviour
         gunTransform.localRotation = Quaternion.Lerp(gunTransform.localRotation, originalGunRotation, Time.deltaTime * recoilReturnSpeed);
     }
 
+    void updateAmmoCount(int currentAmmo)
+    {
+
+    }
+
     void updateAmmoUI()
     {
         ammoText.text = $"{currentAmmo}/{maxAmmo}";
+    }
+
+    void playMuzzleFlashVFX()
+    {
+        flashVFX.Play();
     }
 }
