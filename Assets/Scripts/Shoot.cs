@@ -24,11 +24,16 @@ public class Shoot : MonoBehaviour
 
     public ParticleSystem flashVFX;
 
+
+    public AudioClip gunShotSFX;
+    private AudioSource playerAudio;
+
     void Start()
     {
         currentAmmo = maxAmmo;
         updateAmmoUI();
         originalGunRotation = gunTransform.localRotation;
+        playerAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -40,6 +45,7 @@ public class Shoot : MonoBehaviour
             playMuzzleFlashVFX();
             currentAmmo -= 1;
             updateAmmoUI();
+            playerAudio.PlayOneShot(gunShotSFX, 1f);
             
         }
 
