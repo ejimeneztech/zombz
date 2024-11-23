@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Extract : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Extract : MonoBehaviour
             PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
             if(playerInventory != null && playerInventory.collectedItems == 3)
             {
-                Debug.Log("Extracted Successfully");
+                SceneManager.LoadScene("WinScreen");
             } 
             
         }
