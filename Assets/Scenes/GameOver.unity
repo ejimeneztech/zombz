@@ -573,6 +573,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5437619999674530907, guid: 3cc8cd36bc3923444865dc80b1daad4c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9029135068411126211, guid: 3cc8cd36bc3923444865dc80b1daad4c, type: 3}
       propertyPath: m_Name
       value: StartScreen

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class PlayerHealth : MonoBehaviour
     // health bar
     public Image healthBarFill;
 
+    //Cheat mode
+    private bool unlimitedHealth  = false;
+    private string cheatCode = "godmode";
+    private string enteredCode = "";
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +26,15 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
+    void Update()
+    {
+        CheckForCheatCode();
+    }
+
     public void TakeDamage(float damageAmount)
     {
+        if (unlimitedHealth) return;
+
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, health); // Clamp to prevent negative health
         UpdateHealthBar();
@@ -30,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
 
             healthBarFill.gameObject.SetActive(false); 
             Destroy(gameObject);
-            Debug.Log("You Died.");
+            SceneManager.LoadScene("GameOver");
         }
     }
 
@@ -39,5 +53,29 @@ public class PlayerHealth : MonoBehaviour
 
         healthBarFill.fillAmount = currentHealth / health; // Update the health bar fill amount
        
+    }
+
+    private void CheckForCheatCode()
+    {
+        foreach(char c in Input.inputString)
+        {
+            enteredCode += c;
+
+            if (enteredCode.Length > cheatCode.Length)
+                enteredCode = enteredCode.Substring(1);
+
+            if (enteredCode.Equals(cheatCode))
+            {
+                ToggleUnlimitedHealth();
+                enteredCode = "";
+            }
+
+        }
+    }
+
+    private void ToggleUnlimitedHealth()
+    {
+        unlimitedHealth = !unlimitedHealth; // Toggle cheat mode
+        Debug.Log("Unlimited Health: " + (unlimitedHealth ? "Enabled" : "Disabled"));
     }
 }
