@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class Timer : MonoBehaviour
             {
                 timerText.text = "00:00";  // Ensure it displays 00:00 when time is up
             }
-            Debug.Log("Time's up!");  // Optional: Add actions when time runs out
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
