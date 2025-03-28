@@ -3713,7 +3713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1679397065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4305,8 +4305,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1163417668}
     - target: {fileID: 4752006442475893885, guid: cfcb332d67619214087fa9778edd768a, type: 3}
+      propertyPath: recoilReturnSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752006442475893885, guid: cfcb332d67619214087fa9778edd768a, type: 3}
       propertyPath: recoilRotationAmount
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

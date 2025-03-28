@@ -9,6 +9,7 @@ public class Shoot : MonoBehaviour
     public float damageAmount = 25f; //can go in weapon script
     public string zombieTag = "Zombie";
 
+   
     //ammo
     public int maxAmmo = 25;
     public int currentAmmo;
