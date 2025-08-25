@@ -25,14 +25,16 @@ public class PlayerInventory : MonoBehaviour
         //Increase counter
         collectedItems++;
         updateCountUI();
+        Debug.Log($"Collected item #{collectedItems}, sprite = {itemIcon}");
 
         //Add item icon to first empty slot
         foreach (Image slot in inventorySlots) 
         {
-            if (slot.sprite == emptySlotSprite) // Slot is empty
+            if (slot.sprite == emptySlotSprite || slot.sprite == null) // Slot is empty
             {
                 slot.sprite = itemIcon;
                 slot.color = Color.white;
+                Debug.Log("Placed item in slot!");
                 break;
             }
         }
