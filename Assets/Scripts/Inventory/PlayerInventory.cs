@@ -12,6 +12,8 @@ public class PlayerInventory : MonoBehaviour
     public List<Image> inventorySlots; // Drag your slot images here
     public Sprite emptySlotSprite; // Placeholder for empty
 
+    public int selectedSlotIndex = -1;
+
 
 
     void Start()
@@ -44,5 +46,28 @@ public class PlayerInventory : MonoBehaviour
     void updateCountUI()
     {
         countText.text = $"{collectedItems}/3";
+    }
+
+    //Use Item
+    public void UseItem()
+    {
+        if(selectedSlotIndex >= 0 && selectedSlotIndex < inventorySlots.Count)
+        {
+            Debug.Log($"Using item in slot {selectedSlotIndex}");
+        }
+    }
+
+    //Move Item
+    public void MoveItem()
+    {
+        Debug.Log("Move item - not implemented yet");
+    }
+
+    //Discard Item
+    public void DiscardItem()
+    {
+        Debug.Log($"Discarding item in slot {selectedSlotIndex}");
+        inventorySlots[selectedSlotIndex].sprite = emptySlotSprite;
+        
     }
 }
