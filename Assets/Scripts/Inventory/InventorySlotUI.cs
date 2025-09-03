@@ -8,6 +8,13 @@ public class InventorySlotUI : MonoBehaviour
     public PlayerInventory playerInventory;
     public GameObject contextMenuPanel; //panel with Use/Move/Discard buttons
 
+    void Start()
+    {
+        if (contextMenuPanel != null)
+        {
+            contextMenuPanel.SetActive(false);
+        }
+    }
 
     public void OnSlotClicked()
     {
@@ -17,4 +24,9 @@ public class InventorySlotUI : MonoBehaviour
         playerInventory.selectedSlotIndex = slotIndex;
 
     }
+
+    public void ClosePanel()
+   {
+       contextMenuPanel.SetActive(false);
+   }
 }

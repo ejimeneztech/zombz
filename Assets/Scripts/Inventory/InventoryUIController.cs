@@ -6,7 +6,7 @@ public class InventoryUIController : MonoBehaviour
     public GameObject inventoryScreen;
     public GameObject reticle;
     public FirstPersonController fpsController;
-
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,6 +14,8 @@ public class InventoryUIController : MonoBehaviour
         reticle.SetActive(true);
         inventoryScreen.SetActive(false);
         Time.timeScale = 1f;
+
+        
     }
 
     // Update is called once per frame
